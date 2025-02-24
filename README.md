@@ -1,1 +1,0 @@
-# neovarsity-project-submission
