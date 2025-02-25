@@ -8,6 +8,6 @@ import lombok.Setter;
 public class Payment {
     private String ticketId;
     private Integer amount;
-    private PaymentType mode;
+    private PaymentMode mode;
     private PaymentStatus status;
 }

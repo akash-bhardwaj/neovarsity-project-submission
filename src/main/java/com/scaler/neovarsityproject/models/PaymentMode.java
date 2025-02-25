@@ -1,5 +1,5 @@
 package com.scaler.neovarsityproject.models;
 
-public enum PaymentType {
+public enum PaymentMode {
     CASH, CARD, UPI
 }
