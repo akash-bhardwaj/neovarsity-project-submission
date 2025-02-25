@@ -1,4 +1,4 @@
 package com.scaler.neovarsityproject.models;
 
-public class DisplayBoard {
+public class DisplayBoard extends BaseModel {
 }
