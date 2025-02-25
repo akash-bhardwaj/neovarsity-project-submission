@@ -14,7 +14,7 @@ public class InvoiceDetails extends BaseModel {
     private String invoiceId;
     private Date exitTime;
     private String ticketId;
-    private Ticket ticket;
+    private TicketDetails ticket;
     private double amount;
     private String paymentId;
     private Payment payment;
