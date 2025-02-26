@@ -16,6 +16,11 @@ public class ParkingSpotRepository {
         return parkingSpot;
     }
 
+    public List<ParkingSpot> saveAll(List<ParkingSpot> parkingSpots) {
+        this.parkingSpotList.addAll(parkingSpots);
+        return parkingSpots;
+    }
+
 
     public ParkingSpot findParkingSpotByVehicleTypeAndStatusAvailable (VehicleType vehicleType) {
         for (ParkingSpot parkingSpot : parkingSpotList) {
