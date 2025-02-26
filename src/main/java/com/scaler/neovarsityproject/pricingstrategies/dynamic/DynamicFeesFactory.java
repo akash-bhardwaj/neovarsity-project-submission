@@ -9,15 +9,11 @@ import com.scaler.neovarsityproject.pricingstrategies.timebased.SmallVehicleTime
 public class DynamicFeesFactory implements FeesCalculationFactory {
     @Override
     public FeesStrategy getStrategy(VehicleType vehicleType) {
-        switch (vehicleType) {
-            case SMALL :
-                return new SmallVehicleDynamicStrategy();
-            case LARGE:
-                return new LargeVehicleDynamicStrategy();
-            case MEDIUM:
-                throw new RuntimeException("Not Implemented");
-        }
+        return switch (vehicleType) {
+            case SMALL -> new SmallVehicleDynamicStrategy();
+            case LARGE -> new LargeVehicleDynamicStrategy();
+            case MEDIUM -> new MediumVehicleDynamicStrategy();
+        };
 
-        throw new RuntimeException("Invalid Type");
     }
 }
