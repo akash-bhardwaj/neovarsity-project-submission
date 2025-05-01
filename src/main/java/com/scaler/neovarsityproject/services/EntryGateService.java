@@ -5,8 +5,10 @@ import com.scaler.neovarsityproject.models.ParkingSpot;
 import com.scaler.neovarsityproject.models.SpotStatus;
 import com.scaler.neovarsityproject.models.TicketDetails;
 import com.scaler.neovarsityproject.models.VehicleType;
+import org.springframework.stereotype.Service;
 
 
+@Service
 public class EntryGateService {
     ParkingSpotService parkingSpotService = new ParkingSpotService();
     SlotAllocationService slotAllocationService = new SlotAllocationService();
