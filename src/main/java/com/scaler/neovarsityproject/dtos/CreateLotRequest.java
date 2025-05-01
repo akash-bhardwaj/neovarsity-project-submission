@@ -40,8 +40,8 @@ public class CreateLotRequest {
                 .name(name)
                 .address(address)
                 .floors(parkingFloors)
-                .entryGates((List<ParkingFloor>) Collections.nCopies(numberOfGates, EntryGate.builder().build()))
-                .exitGates((List<ParkingFloor>) Collections.nCopies(numberOfGates, ExitGate.builder().build()))
+                .entryGates(Collections.nCopies(numberOfGates, EntryGate.builder().build()))
+                .exitGates(Collections.nCopies(numberOfGates, ExitGate.builder().build()))
                 .build();
 
     }

@@ -7,7 +7,6 @@ import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @SuperBuilder
 public class EntryGate extends Gate {
     private DisplayBoard displayBoard;

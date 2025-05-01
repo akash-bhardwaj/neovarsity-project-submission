@@ -17,9 +17,9 @@ public class ParkingLot extends BaseModel {
     private List<ParkingFloor> floors = new ArrayList<>();
 
     @Builder.Default
-    private List<ParkingFloor> entryGates = new ArrayList<>();
+    private List<EntryGate> entryGates = new ArrayList<>();
 
     @Builder.Default
-    private List<ParkingFloor> exitGates = new ArrayList<>();
+    private List<ExitGate> exitGates = new ArrayList<>();
 
 }
