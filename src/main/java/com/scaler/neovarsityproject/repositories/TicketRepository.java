@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TicketRepository {
-    private List<TicketDetails> ticketDetailsList = new ArrayList<>();
+    private final List<TicketDetails> ticketDetailsList = new ArrayList<>();
 
     public TicketDetails save (TicketDetails ticketDetails) {
         ticketDetailsList.add(ticketDetails);

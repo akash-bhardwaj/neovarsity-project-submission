@@ -11,14 +11,12 @@ public class ParkingSpotRepository {
 
     List<ParkingSpot> parkingSpotList = new ArrayList<>();
 
-    public ParkingSpot save(ParkingSpot parkingSpot) {
+    public void save(ParkingSpot parkingSpot) {
         parkingSpotList.add(parkingSpot);
-        return parkingSpot;
     }
 
-    public List<ParkingSpot> saveAll(List<ParkingSpot> parkingSpots) {
+    public void saveAll(List<ParkingSpot> parkingSpots) {
         this.parkingSpotList.addAll(parkingSpots);
-        return parkingSpots;
     }
 
 
