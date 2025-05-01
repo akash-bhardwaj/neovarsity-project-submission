@@ -2,7 +2,9 @@ package com.scaler.neovarsityproject.services;
 
 import com.scaler.neovarsityproject.models.ParkingLot;
 import com.scaler.neovarsityproject.repositories.ParkingLotRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ParkingLotService {
 
     private ParkingLotRepository parkingLotRepository;
