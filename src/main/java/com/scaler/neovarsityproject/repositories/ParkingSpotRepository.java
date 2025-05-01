@@ -30,4 +30,11 @@ public class ParkingSpotRepository {
         }
         return null;
     }
+
+    public long countFilledOrOutOfServiceSpots() {
+        return parkingSpotList.stream()
+                .filter(spot -> spot.getSpotStatus() == SpotStatus.FILLED
+                        || spot.getSpotStatus() == SpotStatus.OUT_OF_SERVICE)
+                .count();
+    }
 }

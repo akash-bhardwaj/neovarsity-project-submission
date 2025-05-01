@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
 
 public class ParkingSpotService {
 
-    private ParkingSpotRepository parkingSpotRepository = new ParkingSpotRepository();
+    private final ParkingSpotRepository parkingSpotRepository = new ParkingSpotRepository();
 
-    public List<ParkingSpot> createSpots(ParkingLot parkingLot) {
+    public void createSpots(ParkingLot parkingLot) {
         List<ParkingSpot> parkingSpots = parkingLot
                 .getFloors()
                 .stream()
                 .flatMap(floor -> floor.getParkingSpotList().stream())
                 .collect(Collectors.toList());
-        return parkingSpotRepository.saveAll(parkingSpots);
+        parkingSpotRepository.saveAll(parkingSpots);
     }
     public void markSlotBooked(ParkingSpot parkingSpot) {
         parkingSpotRepository.save(parkingSpot);

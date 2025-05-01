@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 public class TicketService {
 
-    private TicketRepository ticketRepository = new TicketRepository();
+    private final TicketRepository ticketRepository = new TicketRepository();
 
     public TicketDetails createTicket(VehicleType vehicleType, ParkingSpot parkingSpot) {
 
@@ -18,6 +18,7 @@ public class TicketService {
                 .entryTime(LocalDateTime.now())
                 .floorNumber(parkingSpot.getFloorNumber())
                 .slotNumber(parkingSpot.getSpotId())
+                .vehicleType(vehicleType)
                 .build();
 
         return ticketRepository.save(ticketDetails);

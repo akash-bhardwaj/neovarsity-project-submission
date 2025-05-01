@@ -6,7 +6,7 @@ import com.scaler.neovarsityproject.repositories.ParkingSpotRepository;
 
 public class SlotAllocationService {
 
-    private ParkingSpotRepository parkingSpotRepository = new ParkingSpotRepository();
+    private final ParkingSpotRepository parkingSpotRepository = new ParkingSpotRepository();
 
     public ParkingSpot allocateSlotBasedOnVehicleType (VehicleType vehicleType) {
         return parkingSpotRepository.findParkingSpotByVehicleTypeAndStatusAvailable(vehicleType);
