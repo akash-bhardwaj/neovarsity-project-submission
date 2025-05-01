@@ -7,10 +7,12 @@ public class FeesStrategyFactory {
 
     public static FeesCalculationFactory getFactory(String pricingScheme) {
         switch (pricingScheme) {
-            case "TimeBased" :
+            case "TimeBased" -> {
                 return new TimeBasedFeesStrategyFactory();
-            case "Dynamic" :
+            }
+            case "Dynamic" -> {
                 return new DynamicFeesFactory();
+            }
         }
 
         throw new RuntimeException();

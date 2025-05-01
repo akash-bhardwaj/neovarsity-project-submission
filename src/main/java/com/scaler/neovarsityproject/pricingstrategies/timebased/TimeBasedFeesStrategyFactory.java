@@ -9,9 +9,9 @@ public class TimeBasedFeesStrategyFactory implements FeesCalculationFactory {
     @Override
     public FeesStrategy getStrategy(VehicleType vehicleType) {
         return switch (vehicleType) {
-            case LARGE -> new LargeVehicleTimeStrategy();
-            case MEDIUM -> new MediumVehicleTimeStrategy();
-            case SMALL -> new SmallVehicleTimeStrategy();
+            case SMALL -> new SmallVehicleTimeBasedFeesStrategy();
+            case MEDIUM -> new MediumVehicleTimeBasedFeesStrategy();
+            case LARGE -> new LargeVehicleTimeBasedFeesStrategy();
         };
 
     }
