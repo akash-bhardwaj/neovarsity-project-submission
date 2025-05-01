@@ -6,6 +6,7 @@ import com.scaler.neovarsityproject.models.SpotStatus;
 import com.scaler.neovarsityproject.models.TicketDetails;
 import com.scaler.neovarsityproject.models.VehicleType;
 
+
 public class EntryGateService {
     ParkingSpotService parkingSpotService = new ParkingSpotService();
     SlotAllocationService slotAllocationService = new SlotAllocationService();
