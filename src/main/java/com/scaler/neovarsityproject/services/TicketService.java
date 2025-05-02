@@ -17,7 +17,7 @@ public class TicketService {
                 .builder()
                 .entryTime(LocalDateTime.now())
                 .floorNumber(parkingSpot.getFloorNumber())
-                .slotNumber(parkingSpot.getSpotId())
+                .spotNumber(parkingSpot.getSpotId())
                 .vehicleType(vehicleType)
                 .build();
 

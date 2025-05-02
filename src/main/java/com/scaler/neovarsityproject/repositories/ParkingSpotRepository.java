@@ -2,6 +2,7 @@ package com.scaler.neovarsityproject.repositories;
 
 import com.scaler.neovarsityproject.models.ParkingSpot;
 import com.scaler.neovarsityproject.models.SpotStatus;
+import com.scaler.neovarsityproject.models.TicketDetails;
 import com.scaler.neovarsityproject.models.VehicleType;
 
 import java.util.ArrayList;
@@ -20,13 +21,21 @@ public class ParkingSpotRepository {
     }
 
 
-    public ParkingSpot findParkingSpotByVehicleTypeAndStatusAvailable (VehicleType vehicleType) {
+    public ParkingSpot findParkingSpotByVehicleTypeAndStatusAvailable(VehicleType vehicleType) {
         for (ParkingSpot parkingSpot : parkingSpotList) {
             if(parkingSpot.getSpotStatus() == SpotStatus.AVAILABLE && parkingSpot.getVehicleType() == vehicleType) {
                 return parkingSpot;
             }
         }
         return null;
+    }
+
+    public ParkingSpot findParkingSpotByTicketDetails(TicketDetails ticketDetails) {
+        return parkingSpotList
+                .stream()
+                .filter(parkingSpot -> parkingSpot.getSpotId().equals(ticketDetails.getSpotNumber()))
+                .findFirst()
+                .orElse(null);
     }
 
     public long countFilledOrOutOfServiceSpots() {
