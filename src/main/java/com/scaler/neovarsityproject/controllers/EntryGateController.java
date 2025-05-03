@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @RequestMapping("/entry-gate")
 public class EntryGateController {
-    EntryGateService entryGateService = new EntryGateService();
+    EntryGateService entryGateService;
 
     @GetMapping
-    public ResponseEntity<GetTicketDTO> createTicket(@RequestParam(defaultValue = "MEDIUM") VehicleType vehicleType){
+    public ResponseEntity<GetTicketDTO> createTicket(@RequestParam(defaultValue = "MEDIUM") VehicleType vehicleType) {
         GetTicketDTO ticket = entryGateService.createTicket(vehicleType);
         return new ResponseEntity<>(ticket, HttpStatus.ACCEPTED);
     }

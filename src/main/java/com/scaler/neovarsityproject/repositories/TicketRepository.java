@@ -13,4 +13,11 @@ public class TicketRepository {
         return ticketDetails;
     }
 
+    public TicketDetails getTicketDetailsFromTicketId(String ticketId) {
+        return ticketDetailsList.stream()
+                .filter(ticketDetails -> ticketDetails.getTicketId().equals(ticketId))
+                .findFirst()
+                .orElse(null);
+    }
+
 }
