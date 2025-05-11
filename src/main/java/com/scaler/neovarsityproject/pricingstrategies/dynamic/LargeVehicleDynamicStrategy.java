@@ -1,14 +1,19 @@
 package com.scaler.neovarsityproject.pricingstrategies.dynamic;
 
+import com.scaler.neovarsityproject.models.SpotStatus;
 import com.scaler.neovarsityproject.models.TicketDetails;
 import com.scaler.neovarsityproject.pricingstrategies.FeesStrategy;
 import com.scaler.neovarsityproject.repositories.ParkingSpotRepository;
+import lombok.AllArgsConstructor;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 
+@AllArgsConstructor
 public class LargeVehicleDynamicStrategy implements FeesStrategy {
 
-    private final ParkingSpotRepository parkingSpotRepository = new ParkingSpotRepository();
+    private final ParkingSpotRepository parkingSpotRepository;
+
     @Override
     public int calculateFees(TicketDetails ticketDetails) {
         double baseRate = 100;
@@ -25,7 +30,8 @@ public class LargeVehicleDynamicStrategy implements FeesStrategy {
     }
 
     private double getMultiplierBasedOnOccupancyRate() {
-        double occupancyRate = (parkingSpotRepository.countFilledOrOutOfServiceSpots() * 100.0) / 9000;
+        double occupancyRate = (parkingSpotRepository.countBySpotStatusIn(Arrays.asList(SpotStatus.FILLED,
+                SpotStatus.OUT_OF_SERVICE)) * 100.0) / 9000;
 
         double multiplier;
         if (occupancyRate < 50) {

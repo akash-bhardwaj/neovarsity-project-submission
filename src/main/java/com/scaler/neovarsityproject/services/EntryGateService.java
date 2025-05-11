@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EntryGateService {
-    ParkingSpotService parkingSpotService = new ParkingSpotService();
-    SlotAllocationService slotAllocationService = new SlotAllocationService();
+    ParkingSpotService parkingSpotService;
+    SlotAllocationService slotAllocationService;
     TicketService ticketService = new TicketService();
 
 

@@ -1,15 +1,8 @@
 package com.scaler.neovarsityproject.repositories;
 
 import com.scaler.neovarsityproject.models.ParkingLot;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class ParkingLotRepository {
-    private final List<ParkingLot> parkingLotList = new ArrayList<>();
-
-    public ParkingLot save(ParkingLot parkingLot) {
-        parkingLotList.add(parkingLot);
-        return parkingLot;
-    }
+public interface ParkingLotRepository extends JpaRepository<ParkingLot, Long> {
 }

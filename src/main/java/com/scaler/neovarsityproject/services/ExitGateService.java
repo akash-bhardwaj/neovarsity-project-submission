@@ -9,13 +9,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ExitGateService {
-    private final ParkingSpotRepository parkingSpotRepository = new ParkingSpotRepository();
+    private final ParkingSpotRepository parkingSpotRepository;
 
     private final TicketRepository ticketRepository = new TicketRepository();
 
+    public ExitGateService(ParkingSpotRepository parkingSpotRepository) {
+        this.parkingSpotRepository = parkingSpotRepository;
+    }
+
     public void vacateVehicleSlot(String ticketId) {
         TicketDetails ticketDetails = ticketRepository.getTicketDetailsFromTicketId(ticketId);
-        ParkingSpot parkingSpot = parkingSpotRepository.findParkingSpotByTicketDetails(ticketDetails);
+        ParkingSpot parkingSpot = parkingSpotRepository.findBySpotId(ticketDetails.getSpotNumber());
         parkingSpot.setSpotStatus(SpotStatus.AVAILABLE);
         parkingSpotRepository.save(parkingSpot);
     }
