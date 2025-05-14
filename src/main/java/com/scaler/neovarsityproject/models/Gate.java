@@ -1,9 +1,6 @@
 package com.scaler.neovarsityproject.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
@@ -15,9 +12,12 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @SuperBuilder
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+
 public class Gate {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @CreatedDate
     @Column(updatable = false)

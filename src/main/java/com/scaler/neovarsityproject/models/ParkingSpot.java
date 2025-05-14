@@ -19,12 +19,4 @@ public class ParkingSpot extends BaseModel {
     @ManyToOne
     @JoinColumn(name = "floor_id")
     private ParkingFloor floor;
-
-    public static ParkingSpot spotAvailableForMediumVehicle() {
-        return ParkingSpot
-                .builder()
-                .vehicleType(VehicleType.MEDIUM)
-                .spotStatus(SpotStatus.AVAILABLE)
-                .build();
-    }
 }

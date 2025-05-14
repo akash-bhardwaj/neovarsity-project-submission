@@ -1,33 +1,27 @@
 package com.scaler.neovarsityproject.models;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Setter
 @SuperBuilder
 @Entity
 public class ParkingLot extends BaseModel {
     private String name;
     private String address;
 
-    @Builder.Default
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "parking_floor_id")
-    private List<ParkingFloor> floors = new ArrayList<>();
+    @OneToMany(mappedBy = "parkingLot", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ParkingFloor> floors;
 
-    @Builder.Default
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "entry_gate_id")
-    private List<EntryGate> entryGates = new ArrayList<>();
+    @OneToMany(mappedBy = "parkingLot", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EntryGate> entryGates;
 
-    @Builder.Default
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "exit_gate_id")
-    private List<ExitGate> exitGates = new ArrayList<>();
+    @OneToMany(mappedBy = "parkingLot", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ExitGate> exitGates;
 
 }

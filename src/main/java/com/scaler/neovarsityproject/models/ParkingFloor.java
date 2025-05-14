@@ -1,9 +1,6 @@
 package com.scaler.neovarsityproject.models;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,11 +16,14 @@ import java.util.List;
 public class ParkingFloor extends BaseModel {
     private Integer floorNumber;
     private String name;
-    @Builder.Default
-    @OneToMany(mappedBy = "floor", cascade = CascadeType.ALL)
-    private List<ParkingSpot> parkingSpotList = new ArrayList<>();
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "parking_lot_id")
+    private ParkingLot parkingLot;
+
+    @OneToMany(mappedBy = "floor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ParkingSpot> parkingSpotList;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private PaymentCounter paymentCounter;
-
 }

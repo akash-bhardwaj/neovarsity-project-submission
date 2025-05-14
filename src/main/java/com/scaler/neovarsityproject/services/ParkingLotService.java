@@ -14,9 +14,12 @@ public class ParkingLotService {
 
     public ParkingLot createParkingLot(ParkingLot parkingLot) {
         parkingLot.setId(null);
-        ParkingLot lot = parkingLotRepository.save(parkingLot);
-        parkingSpotService.createSpots(lot);
-        return lot;
+        parkingLotRepository.save(parkingLot);
+//        parkingSpotService.persistParkingSpotsAndFloors(parkingLot.getFloors().get(0).getParkingSpotList(),
+//                parkingLot.getFloors());
+
+
+        return parkingLot;
     }
 
 }

@@ -18,31 +18,55 @@ public class CreateLotRequest {
     private int numberOfGates;
 
 
-    public ParkingLot toParkingLot() {
-        int min = 1;
-        int max = 9000;
+    public ParkingLot populateParkingLotWithFloorsAndSlots() {
 
-        List<ParkingSpot> parkingSpotsPerFloor = Collections.nCopies(
-                numberOfSlotsPerFloor,
-                ParkingSpot.spotAvailableForMediumVehicle());
+        List<ParkingFloor> parkingFloors = new ArrayList<>();
 
-        parkingSpotsPerFloor.forEach(parkingSpot -> parkingSpot.setSpotId((int) (Math.random() * (max - min + 1)) + min));
+        for (int floorNumber = 1; floorNumber <= numberOfFloors; floorNumber++) {
+            List<ParkingSpot> parkingSpotPerFloor = new ArrayList<>();
 
-        List<ParkingFloor> parkingFloors = Collections.nCopies(numberOfFloors, ParkingFloor
-                        .builder()
-                        .parkingSpotList(parkingSpotsPerFloor)
-                        .paymentCounter(PaymentCounter.builder().build()).build());
+            for (int spotNumber = 1; spotNumber <= numberOfSlotsPerFloor; spotNumber++) {
+                ParkingSpot parkingSpot = ParkingSpot.builder()
+                        .vehicleType(VehicleType.MEDIUM)
+                        .spotStatus(SpotStatus.AVAILABLE)
+                        .spotId(generateRandomSpotId())
+                        .floorNumber(floorNumber)
+                        .build();
+
+                parkingSpotPerFloor.add(parkingSpot);
+            }
+
+            ParkingFloor parkingFloor = ParkingFloor.builder().floorNumber(floorNumber).name("Floor " + floorNumber)
+                    .parkingSpotList(parkingSpotPerFloor).paymentCounter(PaymentCounter.builder().build()).build();
+
+            for (ParkingSpot parkingSpot : parkingSpotPerFloor) {
+                parkingSpot.setFloor(parkingFloor);
+            }
+            parkingFloors.add(parkingFloor);
+        }
+
+        List<EntryGate> entryGates = new ArrayList<>();
+        List<ExitGate> exitGates = new ArrayList<>();
+
+        for (int i = 0; i < numberOfGates; i++) {
+            entryGates.add(EntryGate.builder().build());
+            exitGates.add(ExitGate.builder().build());
+        }
 
 
         return ParkingLot
                 .builder()
-                .id(id)
                 .name(name)
                 .address(address)
                 .floors(parkingFloors)
-                .entryGates(Collections.nCopies(numberOfGates, EntryGate.builder().build()))
-                .exitGates(Collections.nCopies(numberOfGates, ExitGate.builder().build()))
+                .entryGates(entryGates)
+                .exitGates(exitGates)
                 .build();
 
+    }
+
+    private int generateRandomSpotId() {
+        int min = 1, max = 9000;
+        return (int) (Math.random() * (max - min + 1)) + min;
     }
 }

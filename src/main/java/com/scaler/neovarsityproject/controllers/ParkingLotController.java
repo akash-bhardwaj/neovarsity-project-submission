@@ -22,7 +22,8 @@ public class ParkingLotController {
     @PostMapping
     public ResponseEntity<ParkingLot> createParkingLot(@Valid @RequestBody CreateLotRequest createLotRequest) {
         validate(createLotRequest);
-        ParkingLot parkingLot = parkingLotService.createParkingLot(createLotRequest.toParkingLot());
+        ParkingLot parkingLot = parkingLotService.createParkingLot(createLotRequest.
+                populateParkingLotWithFloorsAndSlots());
         return new ResponseEntity<>(parkingLot, HttpStatus.CREATED);
     }
 
