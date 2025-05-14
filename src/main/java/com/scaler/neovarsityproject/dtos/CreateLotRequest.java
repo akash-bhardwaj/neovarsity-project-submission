@@ -39,9 +39,6 @@ public class CreateLotRequest {
             ParkingFloor parkingFloor = ParkingFloor.builder().floorNumber(floorNumber).name("Floor " + floorNumber)
                     .parkingSpotList(parkingSpotPerFloor).paymentCounter(PaymentCounter.builder().build()).build();
 
-            for (ParkingSpot parkingSpot : parkingSpotPerFloor) {
-                parkingSpot.setFloor(parkingFloor);
-            }
             parkingFloors.add(parkingFloor);
         }
 
