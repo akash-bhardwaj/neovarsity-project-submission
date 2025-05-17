@@ -2,6 +2,7 @@ package com.scaler.neovarsityproject.models;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
@@ -10,6 +11,7 @@ import java.util.Date;
 @Getter
 @Setter
 @SuperBuilder
+@NoArgsConstructor
 public class InvoiceDetails extends BaseModel {
 
     private String invoiceId;

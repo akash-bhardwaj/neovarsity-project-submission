@@ -5,17 +5,15 @@ import com.scaler.neovarsityproject.models.SpotStatus;
 import com.scaler.neovarsityproject.models.TicketDetails;
 import com.scaler.neovarsityproject.repositories.ParkingSpotRepository;
 import com.scaler.neovarsityproject.repositories.TicketRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class ExitGateService {
     private final ParkingSpotRepository parkingSpotRepository;
 
     private final TicketRepository ticketRepository = new TicketRepository();
-
-    public ExitGateService(ParkingSpotRepository parkingSpotRepository) {
-        this.parkingSpotRepository = parkingSpotRepository;
-    }
 
     public void vacateVehicleSlot(String ticketId) {
         TicketDetails ticketDetails = ticketRepository.getTicketDetailsFromTicketId(ticketId);

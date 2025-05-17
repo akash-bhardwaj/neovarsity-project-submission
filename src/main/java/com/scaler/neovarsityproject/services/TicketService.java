@@ -4,9 +4,11 @@ import com.scaler.neovarsityproject.models.ParkingSpot;
 import com.scaler.neovarsityproject.models.TicketDetails;
 import com.scaler.neovarsityproject.models.VehicleType;
 import com.scaler.neovarsityproject.repositories.TicketRepository;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@Service
 public class TicketService {
 
     private final TicketRepository ticketRepository = new TicketRepository();

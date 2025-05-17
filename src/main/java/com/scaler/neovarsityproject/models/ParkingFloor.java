@@ -3,6 +3,7 @@ package com.scaler.neovarsityproject.models;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Setter
 @SuperBuilder
 @Entity
+@NoArgsConstructor
 public class ParkingFloor extends BaseModel {
     private Integer floorNumber;
     private String name;

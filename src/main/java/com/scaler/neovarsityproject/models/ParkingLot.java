@@ -11,6 +11,7 @@ import java.util.List;
 @Setter
 @SuperBuilder
 @Entity
+@NoArgsConstructor
 public class ParkingLot extends BaseModel {
     private String name;
     private String address;

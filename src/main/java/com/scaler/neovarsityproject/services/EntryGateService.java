@@ -5,14 +5,16 @@ import com.scaler.neovarsityproject.models.ParkingSpot;
 import com.scaler.neovarsityproject.models.SpotStatus;
 import com.scaler.neovarsityproject.models.TicketDetails;
 import com.scaler.neovarsityproject.models.VehicleType;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
 @Service
+@AllArgsConstructor
 public class EntryGateService {
-    ParkingSpotService parkingSpotService;
-    SlotAllocationService slotAllocationService;
-    TicketService ticketService = new TicketService();
+    private ParkingSpotService parkingSpotService;
+    private SlotAllocationService slotAllocationService;
+    private TicketService ticketService;
 
 
     public GetTicketDTO createTicket(VehicleType vehicleType) {

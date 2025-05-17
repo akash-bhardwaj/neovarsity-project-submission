@@ -6,6 +6,8 @@ import lombok.Getter;
 
 import java.util.*;
 
+import java.util.Random;
+
 @Getter
 @Builder
 public class CreateLotRequest {
@@ -21,13 +23,14 @@ public class CreateLotRequest {
     public ParkingLot populateParkingLotWithFloorsAndSlots() {
 
         List<ParkingFloor> parkingFloors = new ArrayList<>();
+        Random RANDOM = new Random();
 
         for (int floorNumber = 1; floorNumber <= numberOfFloors; floorNumber++) {
             List<ParkingSpot> parkingSpotPerFloor = new ArrayList<>();
 
             for (int spotNumber = 1; spotNumber <= numberOfSlotsPerFloor; spotNumber++) {
                 ParkingSpot parkingSpot = ParkingSpot.builder()
-                        .vehicleType(VehicleType.MEDIUM)
+                        .vehicleType(getRandomVehicleType())
                         .spotStatus(SpotStatus.AVAILABLE)
                         .spotId(generateRandomSpotId())
                         .floorNumber(floorNumber)
@@ -65,5 +68,11 @@ public class CreateLotRequest {
     private int generateRandomSpotId() {
         int min = 1, max = 9000;
         return (int) (Math.random() * (max - min + 1)) + min;
+    }
+
+    public VehicleType getRandomVehicleType() {
+        Random RANDOM = new Random();
+        VehicleType[] values = VehicleType.values();
+        return values[RANDOM.nextInt(values.length)];
     }
 }

@@ -2,6 +2,7 @@ package com.scaler.neovarsityproject.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 @SuperBuilder
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor
 public class BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
