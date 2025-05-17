@@ -13,6 +13,7 @@ public class SlotAllocationService {
 
     private final ParkingSpotRepository parkingSpotRepository;
     public ParkingSpot allocateSlotBasedOnVehicleType (VehicleType vehicleType) {
-        return parkingSpotRepository.findByVehicleTypeAndSpotStatus(vehicleType, SpotStatus.AVAILABLE).get(0);
+        return parkingSpotRepository
+                .findByVehicleTypeAndSpotStatus(vehicleType, SpotStatus.AVAILABLE).stream().findFirst().orElse(null);
     }
 }
