@@ -1,5 +1,6 @@
 package com.scaler.neovarsityproject.models;
 
+import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @SuperBuilder
 @NoArgsConstructor
+@Entity
 public class TicketDetails extends BaseModel {
     private String ticketId;
     private String vehicleId;
