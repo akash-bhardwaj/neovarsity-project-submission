@@ -6,6 +6,7 @@ import com.scaler.neovarsityproject.models.SpotStatus;
 import com.scaler.neovarsityproject.models.TicketDetails;
 import com.scaler.neovarsityproject.models.VehicleType;
 import lombok.AllArgsConstructor;
+import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
 
@@ -17,12 +18,12 @@ public class EntryGateService {
     private TicketService ticketService;
 
 
-    public GetTicketDTO createTicket(VehicleType vehicleType) {
+    public GetTicketDTO createTicket(VehicleType vehicleType) throws BadRequestException {
         ParkingSpot parkingSpot = slotAllocationService.allocateSlotBasedOnVehicleType(vehicleType);
 
         //If no slot available, return from here only.
         if (parkingSpot == null) {
-            throw new RuntimeException("No Slot Available for Parking");
+            throw new BadRequestException("No Slot Available for Parking");
         }
 
         //Update parking spot
