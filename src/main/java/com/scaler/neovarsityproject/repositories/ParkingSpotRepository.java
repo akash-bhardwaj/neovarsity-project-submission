@@ -13,4 +13,6 @@ public interface ParkingSpotRepository extends JpaRepository<ParkingSpot, Long> 
     long countBySpotStatusIn(List<SpotStatus> statuses);
 
     ParkingSpot findBySpotId(Integer spotId);
+
+    ParkingSpot findBySpotIdAndSpotStatus(Integer spotId, SpotStatus spotStatus);
 }

@@ -22,7 +22,8 @@ public class ExitGateService {
         Optional<TicketDetails> ticketDetails = ticketRepository.findById(ticketId);
         ParkingSpot parkingSpot = ticketDetails
                 .map(TicketDetails::getSpotNumber)
-                .map(parkingSpotRepository::findBySpotId)
+                .map(spotId -> parkingSpotRepository
+                        .findBySpotIdAndSpotStatus(spotId,  SpotStatus.FILLED))
                 .orElse(null);
 
         if (parkingSpot == null) {

@@ -21,6 +21,7 @@ public class TicketService {
                 .entryTime(LocalDateTime.now())
                 .floorNumber(parkingSpot.getFloorNumber())
                 .spotNumber(parkingSpot.getSpotId())
+                .ticketId(String.valueOf((int)(Math.random() * 100000)))
                 .vehicleType(vehicleType)
                 .build();
 
