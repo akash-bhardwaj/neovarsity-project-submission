@@ -1,7 +1,6 @@
 package com.scaler.neovarsityproject.services;
 
 import com.scaler.neovarsityproject.models.ParkingFloor;
-import com.scaler.neovarsityproject.models.ParkingLot;
 import com.scaler.neovarsityproject.models.ParkingSpot;
 import com.scaler.neovarsityproject.repositories.ParkingFloorRepository;
 import com.scaler.neovarsityproject.repositories.ParkingSpotRepository;
@@ -21,7 +20,7 @@ public class ParkingSpotService {
         parkingFloorRepository.saveAll(parkingFloorList);
         parkingSpotRepository.saveAll(parkingSpotList);
     }
-    public void markSlotBooked(ParkingSpot parkingSpot) {
+    public void persistParkingSlot(ParkingSpot parkingSpot) {
         parkingSpotRepository.save(parkingSpot);
     }
 }
